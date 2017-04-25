@@ -1,0 +1,166 @@
+<% include header %>
+
+    <script src="http://threejs.org/build/three.js"></script>
+    <script src="http://threejs.org/examples/js/loaders/OBJLoader.js"></script>
+
+    <script src="http://threejs.org/examples/js/Detector.js"></script>
+    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+    <script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>
+
+    <!-- Image Background Page Header -->
+    <!-- Note: The background image is set within the business-casual.css file. -->
+    <header class="business-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="tagline">Face R - Scanner</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Objective</h2>
+                <ul>
+                    <li>Develop a system using Kinect to scan human face.</li>
+                    <li>Generate human face mesh for saving.</li>
+                    <li>Explore adding this Kinect feature to GeomSE (i.e., integrate it to Web).</li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <h2> Required Skills:</h2>
+                <ul>    
+                    <li>Kinect web API</li>
+                    <li>JQuery, JavaScript</li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <h2>Members:</h2>
+                <ul>
+                    <li>Kevin Delamo</li>
+                    <li>Daniel Alvarez</li>
+                    <li>Alejandro Palacios</li>
+                    <li>Cristian Cabrera</li>
+                    <li>Alvaro Silva</li>
+                    <li>Daniel Khawand</li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+        <div id="display-render">
+        </div>
+        <div class="col-sm-4 col-sm-offset-4">
+
+            <script>
+
+                $(document).ready(function(){
+                    // Set up the scene, camera, and renderer as global variables.
+                    var scene, camera, renderer;
+
+                    init();
+                    animate();
+
+                    // Sets up the scene.
+                    function init() {
+
+                      // Create the scene and set the scene size.
+                      scene = new THREE.Scene();
+                      var WIDTH = 500;
+                          HEIGHT = 500;
+
+                      // Create a renderer and add it to the DOM.
+                      //renderer = new THREE.WebGLRenderer({antialias:true});
+                      renderer = new THREE.WebGLRenderer();
+                      renderer.setSize(WIDTH, HEIGHT);
+                      document.getElementById('display-render').appendChild(renderer.domElement);
+
+                      // Create a camera, zoom it out from the model a bit, and add it to the scene.
+                      camera = new THREE.PerspectiveCamera(400, WIDTH / HEIGHT, 0.1, 20000);
+                      camera.position.set(6,6,14);
+                      scene.add(camera);
+
+                      // Create an event listener that resizes the renderer with the browser window.
+                      window.addEventListener('resize', function() {
+                        var WIDTH = window.innerWidth,
+                            HEIGHT = window.innerHeight;
+                        renderer.setSize(WIDTH, HEIGHT);
+                        camera.aspect = WIDTH / HEIGHT;
+                        camera.updateProjectionMatrix();
+                      });
+
+                      var ambient = new THREE.AmbientLight( 0x101030 );
+                      scene.add( ambient );
+                      // Create a light, set its position, and add it to the scene.
+                      var light = new THREE.PointLight(0xffffff);
+                      light.position.set(100,200,100);
+                      scene.add(light);
+
+                      var manager = new THREE.LoadingManager();
+                      manager.onProgress = function ( item, loaded, total ) {
+                        // console.log( item, loaded, total );
+                      };
+
+                      var loader = new THREE.OBJLoader( manager );
+                      loader.load('/img/104_final.obj', function ( object ) {
+
+                        object.traverse( function ( child ) {
+                          if (child instanceof THREE.Mesh ) {
+                             //child.material.map = texture;
+                          }
+                        });
+                        scene.add(object);
+                      // Add OrbitControls so that we can pan around with the mouse.
+                      
+                    });
+                      controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+                    }
+
+                    function render(){
+                      renderer.render(scene,camera);
+                    }
+
+                    // Renders the scene and updates the render as needed.
+                    function animate() {
+
+                      requestAnimationFrame(animate);
+                      
+                      // Render the scene.
+                      render();
+                      controls.update();
+
+                    }
+                });
+            </script>
+        </div>
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Florida International University. Spring 2017</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src=".js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../public/js/bootstrap.min.js"></script>
+
+
+<% include footer %>

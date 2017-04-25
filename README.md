@@ -13,3 +13,6 @@ Running the Project:
 3) Go to the directory containing the project
 4) Run the command: npm start
 5) Open in you browser (Should be Mozilla for WebGL) a localhost in the port number indicated.
+
+Needs:
+Call the API for receiving the Mesh

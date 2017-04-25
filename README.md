@@ -15,4 +15,4 @@ Running the Project:
 5) Open in you browser (Should be Mozilla for WebGL) a localhost in the port number indicated.
 
 Needs:
-[b]Call the API for receiving the Mesh[/b]
+Call the API for receiving the Mesh

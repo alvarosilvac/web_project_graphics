@@ -1,5 +1,10 @@
 # web_project_graphics
-webapp based in node and express
+Webapp based in Node and Express
+
+Requirements:
+
+- NPM
+- Mozilla Firefox
 
 Running the Project:
 

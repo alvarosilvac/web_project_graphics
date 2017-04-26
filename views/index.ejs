@@ -6,62 +6,10 @@
     <script src="http://threejs.org/examples/js/Detector.js"></script>
     <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
     <script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>
-
-    <!-- Image Background Page Header -->
-    <!-- Note: The background image is set within the business-casual.css file. -->
-    <header class="business-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="tagline">Face R - Scanner</h1>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Page Content -->
-    <div class="container">
-
-        <hr>
-
-        <div class="row">
-            <div class="col-sm-4">
-                <h2>Objective</h2>
-                <ul>
-                    <li>Develop a system using Kinect to scan human face.</li>
-                    <li>Generate human face mesh for saving.</li>
-                    <li>Explore adding this Kinect feature to GeomSE (i.e., integrate it to Web).</li>
-                </ul>
-            </div>
-            <div class="col-sm-4">
-                <h2> Required Skills:</h2>
-                <ul>    
-                    <li>Kinect web API</li>
-                    <li>JQuery, JavaScript</li>
-                </ul>
-            </div>
-            <div class="col-sm-4">
-                <h2>Members:</h2>
-                <ul>
-                    <li>Kevin Delamo</li>
-                    <li>Daniel Alvarez</li>
-                    <li>Alejandro Palacios</li>
-                    <li>Cristian Cabrera</li>
-                    <li>Alvaro Silva</li>
-                    <li>Daniel Khawand</li>
-                </ul>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-        <div id="display-render">
-        </div>
-        <div class="col-sm-4 col-sm-offset-4">
-
-            <script>
-
+              <script>
                 $(document).ready(function(){
+
+                    //WHERE THE WEBGL IS INITIALIZED
                     // Set up the scene, camera, and renderer as global variables.
                     var scene, camera, renderer;
 
@@ -138,10 +86,71 @@
                       controls.update();
 
                     }
-                });
-            </script>
-        </div>
 
+                    //JQUERY FOR BUTTON SCAN
+                    $("#scan").click(function(){
+                      alert("working button!");
+                    });
+                });
+
+              
+
+            </script>
+    <!-- Image Background Page Header -->
+    <!-- Note: The background image is set within the business-casual.css file. -->
+    <header class="business-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="tagline">Face R - Scanner</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Objective</h2>
+                <ul>
+                    <li>Develop a system using Kinect to scan human face.</li>
+                    <li>Generate human face mesh for saving.</li>
+                    <li>Explore adding this Kinect feature to GeomSE (i.e., integrate it to Web).</li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <h2> Required Skills:</h2>
+                <ul>    
+                    <li>Kinect web API</li>
+                    <li>JQuery, JavaScript</li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <h2>Members:</h2>
+                <ul>
+                    <li>Kevin Delamo</li>
+                    <li>Daniel Alvarez</li>
+                    <li>Alejandro Palacios</li>
+                    <li>Cristian Cabrera</li>
+                    <li>Alvaro Silva</li>
+                    <li>Daniel Khawand</li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+        <div class="row">
+          <div id="display-render" class="col-md-6">
+          </div>
+          <div class ="col-md-6">
+            <button id="scan"> SCAN </button>
+          </div>
+        </div>
         <hr>
 
         <!-- Footer -->
